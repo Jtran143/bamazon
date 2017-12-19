@@ -19,13 +19,43 @@ connection.query('SELECT * FROM products', function (error, results, fields) {
   console.table(results);
 });
 
+//prompt user product ID they want to buy
+
+var userPrompt = function() {
+  inquirer
+    .prompt ([{
+      name: "item_id",
+      type: "input",
+      message: "What item ID would you like to purchase?",
+    }, {
+      name: "Quantity",
+      type: "input",
+      message: "How many would you like to purchase?",git 
+    }  
+    .then(function(answer) {
+      connection.query("SELECT * FROM products", {product: answer.item_id }, function(err, res) {
+        for (var i = 0; i < res.length; i++) {
+          console.log("Total cost: " + answer.Quantity + " /n "
+        }
+        var idchosen = answer.item_id;
+        var chosenItem = res.idchosen;
+        var quantity = anwer.Quantity;
+
+
+
+
+      });
+    });
+}
+
+
  
 connection.end();
 
 
 
 
-//prompt user product ID
+
 
 //prompt for quantity
 
